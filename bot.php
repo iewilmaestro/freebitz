@@ -2,17 +2,14 @@
 error_reporting(0);
 $zone = json_decode(file_get_contents("http://ip-api.com/json"),1)["timezone"];if($zone){date_default_timezone_set($zone);}
 $host="freebitz.xyz";
-$a = ["iewil","freebitz.xyz","1.5"];
-//$reg = "https://bit.ly/3IKO9Q9";
-//$yt = "https://youtu.be/BeU78LdbeXg";
+$a = ["iewil","freebitz","1.0"];
+$reg = "https://bit.ly/3rstw5t";
+$yt = "https://youtube.com/c/iewil";
 $server = "https://pastebin.com/raw/5mri6gAM";
-$disable = col("Script mati karena web update / scam!","m")."\nSupport Channel saya dengan cara\nSubscribe ".col("https://www.youtube.com/c/iewil","k")."\nkarena subscribe itu gratis :D\nUntuk mendapatkan info Script terbaru\nJoin grub via telegram ~> ".col("https://t.me/Iewil_G","c")."\nðŸ‡®ðŸ‡© ".col("Family-Team-Function-INDO","b")."\n";//Short();bn();
-
+$disable = col("Script mati karena web update / scam!","m")."\nSupport Channel saya dengan cara\nSubscribe ".col("https://www.youtube.com/c/iewil","k")."\nkarena subscribe itu gratis :D\nUntuk mendapatkan info Script terbaru\nJoin grub via telegram ~> ".col("https://t.me/Iewil_G","c")."\nðŸ‡®ðŸ‡© ".col("Family-Team-Function-INDO","b")."\n";Short();bn();
 cookie:
-Save('Cookie');
-Save('User_Agent');
-system("termux-open-url ".$yt);
-bn();
+Save('Cookie');Save('User_Agent');
+system("termux-open-url ".$yt);bn();
 
 menu:
 echo col("1 >","m")." AutoFaucet\n";
