@@ -36,11 +36,11 @@ while(true){
           
 	if(preg_match('/FaucetPay/',$r2)){
 		$pay=col('Faucetpay.io',"b");
-	}elseif(preg_match('/ExpressCrypto/',$r1)){
+	}elseif(preg_match('/ExpressCrypto/',$r2)){
 		$pay=col('ExpressCrypto',"m");
-	}elseif(preg_match('/Balance/',$r1)){
+	}elseif(preg_match('/Balance/',$r2)){
 		$pay=col('Balance',"p");
-	}elseif(preg_match('/Coinbase/',$r1)){
+	}elseif(preg_match('/Coinbase/',$r2)){
 		$pay=col('Coinbase',"b");
 	}else{
 		$pay=null;
