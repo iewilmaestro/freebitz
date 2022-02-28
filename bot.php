@@ -2,7 +2,7 @@
 error_reporting(0);
 $zone = json_decode(file_get_contents("http://ip-api.com/json"),1)["timezone"];if($zone){date_default_timezone_set($zone);}
 $host="freebitz.xyz";
-$a = ["iewil","freebitz","1.0"];
+$a = ["iewil","freebitz","1.1"];
 $reg = "https://bit.ly/3rstw5t";
 $yt = "https://youtube.com/c/iewil";
 $server = "https://pastebin.com/raw/5mri6gAM";
@@ -31,31 +31,24 @@ while(true){
 	
     $user = explode('"',explode('t.name="user"),(t.value="',$r)[1])[0];
     $data = "user=".$user;
-    $r2 = Run($url,array_merge(head(),["content-length"=>37,"content-type"=>"application/x-www-form-urlencoded"]),$data);
+	
+    $r2 = Run($url,array_merge(head(),["content-length"=>"0","content-type"=>"application/x-www-form-urlencoded"]),$data);
     $err=trim(explode('</div>',explode('<div class="AutoACell AAC-error">',$r2)[1])[0]);
-          
-	if(preg_match('/FaucetPay/',$r2)){
-		$pay=col('Faucetpay.io',"b");
-	}elseif(preg_match('/ExpressCrypto/',$r2)){
-		$pay=col('ExpressCrypto',"m");
-	}elseif(preg_match('/Balance/',$r2)){
-		$pay=col('Balance',"p");
-	}elseif(preg_match('/Coinbase/',$r2)){
-		$pay=col('Coinbase',"b");
-	}else{
-		$pay=null;
-	}
     $token=explode('</div>',explode('<i class="fas fa-coins"></i>',$r)[1])[0];
-	preg_match_all('#<div class="AutoACell AAC-success">(.*?)<a#is',$r2,$has);
+	preg_match_all('#<div class="AutoACell AAC-success">(.*?)</a>#is',$r2,$has);
 	if($has[1]){
+		echo "\r            \r";
 		if($token){
-			echo col(trim($token),"k")."\n";;
+			echo col(trim($token),"k")."\n";
 		}
 		for($i=0;$i<count($has[1]);$i++){
-			echo col(trim($has[1][$i]),'h')." ".$pay."\n";
+			echo col(trim(strip_tags($has[1][$i])),'h')."\n";
 		}
 		line();
 		tmr(60);
+	}else{
+		echo "\r            \r";
+		echo col('please wait','m');
 	}
 	if($err == 'Insufficient balance to claim rewards.'){echo col($err,"m")."\n";line();goto menu;}
 }
